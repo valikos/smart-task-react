@@ -1,18 +1,23 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes as RPT } from 'react';
 import logo from './logo.svg';
+
 import './App.css';
+import '../node_modules/semantic-ui-css/semantic.min.css';
+
+import { Router, useRouterHistory } from 'react-router';
 
 class App extends Component {
+
+  static propTypes = {
+    children: RPT.node
+  }
+
   render() {
+    const { children } = this.props;
+
     return (
       <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        {children}
       </div>
     );
   }
