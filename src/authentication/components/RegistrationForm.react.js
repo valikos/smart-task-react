@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import { Button, Checkbox, Form } from 'semantic-ui-react'
+import { Button, Form } from 'semantic-ui-react'
 
 export default class RegistrationForm extends Component {
   render() {
     return (
-
       <Form>
         <Form.Field>
           <input placeholder='E-mail' />

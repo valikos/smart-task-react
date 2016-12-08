@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
-import ProjectList from './ProjectList.react';
-import { Grid, Segment, Divider, Icon, Header, Button } from 'semantic-ui-react';
+import { Grid } from 'semantic-ui-react';
+import projectComponents from '../../projects/components';
 
-export default class Page extends Component {
+const { ProjectList, NewProjectModal } = projectComponents;
+
+export default class ProjectsIndex extends Component {
+
   render() {
     return (
       <Grid centered columns={2}>
@@ -13,12 +16,10 @@ export default class Page extends Component {
         </Grid.Row>
         <Grid.Row>
           <Grid.Column textAlign='center'>
-            <Button color='blue' size='large'>
-              <Icon name='plus' /> Add Project
-            </Button>
+            <NewProjectModal />
           </Grid.Column>
         </Grid.Row>
       </Grid>
-    )
+    );
   }
-};
+}

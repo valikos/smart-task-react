@@ -1,10 +1,6 @@
 import React, { Component, PropTypes as RPT } from 'react';
-import logo from './logo.svg';
-
 import './App.css';
 import '../node_modules/semantic-ui-css/semantic.min.css';
-
-import { Router, useRouterHistory } from 'react-router';
 
 class App extends Component {
 

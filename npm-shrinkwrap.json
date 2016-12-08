@@ -2,6 +2,11 @@
   "name": "smart-task",
   "version": "0.1.0",
   "dependencies": {
+    "array-findindex-polyfill": {
+      "version": "0.1.0",
+      "from": "array-findindex-polyfill@>=0.1.0 <0.2.0",
+      "resolved": "https://registry.npmjs.org/array-findindex-polyfill/-/array-findindex-polyfill-0.1.0.tgz"
+    },
     "asap": {
       "version": "2.0.5",
       "from": "asap@>=2.0.3 <2.1.0",
@@ -64,6 +69,11 @@
       "resolved": "https://registry.npmjs.org/errno/-/errno-0.1.4.tgz",
       "dev": true,
       "optional": true
+    },
+    "es6-error": {
+      "version": "4.0.0",
+      "from": "es6-error@>=4.0.0 <5.0.0",
+      "resolved": "https://registry.npmjs.org/es6-error/-/es6-error-4.0.0.tgz"
     },
     "fbjs": {
       "version": "0.8.6",
@@ -925,6 +935,11 @@
       "from": "invariant@>=2.0.0 <3.0.0",
       "resolved": "https://registry.npmjs.org/invariant/-/invariant-2.2.2.tgz"
     },
+    "is-promise": {
+      "version": "2.1.0",
+      "from": "is-promise@>=2.1.0 <3.0.0",
+      "resolved": "https://registry.npmjs.org/is-promise/-/is-promise-2.1.0.tgz"
+    },
     "is-stream": {
       "version": "1.1.0",
       "from": "is-stream@>=1.0.1 <2.0.0",
@@ -984,6 +999,11 @@
       "from": "lodash._basefor@>=3.0.0 <4.0.0",
       "resolved": "https://registry.npmjs.org/lodash._basefor/-/lodash._basefor-3.0.3.tgz"
     },
+    "lodash._getnative": {
+      "version": "3.9.1",
+      "from": "lodash._getnative@>=3.0.0 <4.0.0",
+      "resolved": "https://registry.npmjs.org/lodash._getnative/-/lodash._getnative-3.9.1.tgz"
+    },
     "lodash.isarguments": {
       "version": "3.1.0",
       "from": "lodash.isarguments@>=3.0.0 <4.0.0",
@@ -998,6 +1018,11 @@
       "version": "3.2.0",
       "from": "lodash.isplainobject@>=3.2.0 <4.0.0",
       "resolved": "https://registry.npmjs.org/lodash.isplainobject/-/lodash.isplainobject-3.2.0.tgz"
+    },
+    "lodash.keys": {
+      "version": "3.1.2",
+      "from": "lodash.keys@>=3.1.2 <4.0.0",
+      "resolved": "https://registry.npmjs.org/lodash.keys/-/lodash.keys-3.1.2.tgz"
     },
     "lodash.keysin": {
       "version": "3.0.8",
@@ -7343,6 +7368,11 @@
       "from": "redux-devtools-extension@latest",
       "resolved": "https://registry.npmjs.org/redux-devtools-extension/-/redux-devtools-extension-1.0.0.tgz"
     },
+    "redux-form": {
+      "version": "6.2.1",
+      "from": "redux-form@latest",
+      "resolved": "https://registry.npmjs.org/redux-form/-/redux-form-6.2.1.tgz"
+    },
     "redux-json-api": {
       "version": "1.6.2",
       "from": "redux-json-api@latest",
@@ -7368,6 +7398,11 @@
       "version": "0.61.7",
       "from": "https://registry.npmjs.org/semantic-ui-react/-/semantic-ui-react-0.61.7.tgz",
       "resolved": "https://registry.npmjs.org/semantic-ui-react/-/semantic-ui-react-0.61.7.tgz"
+    },
+    "shallowequal": {
+      "version": "0.2.2",
+      "from": "shallowequal@>=0.2.2 <0.3.0",
+      "resolved": "https://registry.npmjs.org/shallowequal/-/shallowequal-0.2.2.tgz"
     },
     "source-map": {
       "version": "0.5.6",
