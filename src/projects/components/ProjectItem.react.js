@@ -1,9 +1,11 @@
 import { connect } from 'react-redux';
 import React, { Component } from 'react';
-import NewTaskForm from '../../components/NewTaskForm.react';
+import taskComponents from '../../tasks/components';
 import EditProjectModal from './EditProjectModal.react';
 import { Grid, Segment, Icon, Header, Popup, Button } from 'semantic-ui-react';
 import { deleteProject } from '../actions';
+
+const { NewTaskForm, TaskList } = taskComponents;
 
 class ProjectItem extends Component {
 
@@ -52,10 +54,13 @@ class ProjectItem extends Component {
           </Grid>
         </Segment>
         <Segment>
-          <NewTaskForm />
+          <NewTaskForm
+            form={`NewProject${project.id}TaskForm`}
+            project={project}
+          />
         </Segment>
         <Segment basic>
-          {this.renderTasks()}
+          <TaskList project={project} />
         </Segment>
       </Segment.Group>
     );

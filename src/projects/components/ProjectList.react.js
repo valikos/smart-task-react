@@ -17,7 +17,7 @@ class ProjectList extends Component {
   renderProjects() {
     const { projects } = this.props;
 
-    return projects.data.map(project => (<ProjectItem key={project.id} project={project} />));
+    return projects.data.map(project => <ProjectItem key={project.id} project={project} />);
   }
 
   render() {
