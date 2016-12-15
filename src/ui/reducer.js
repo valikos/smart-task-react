@@ -2,8 +2,9 @@ import * as actions from './actions';
 import { Map } from 'immutable';
 
 const initialState = Map({
-  isNewProjectModalOpen:       false,
-  isEditProjectModalOpen: false
+  isNewProjectModalOpen:  false,
+  isEditProjectModalOpen: false,
+  isNewCommentModalOpen:  false
 });
 
 export default function uiReducer(state = initialState, action) {
@@ -22,6 +23,14 @@ export default function uiReducer(state = initialState, action) {
 
     case actions.CLOSE_EDIT_PROJECT_MODAL: {
       return state.set('isEditProjectModalOpen', false);
+    }
+
+    case actions.OPEN_NEW_COMMENT_MODAL: {
+      return state.set('isNewCommentModalOpen', true);
+    }
+
+    case actions.CLOSE_NEW_COMMENT_MODAL: {
+      return state.set('isNewCommentModalOpen', false);
     }
 
     default: {

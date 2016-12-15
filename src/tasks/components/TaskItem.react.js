@@ -1,8 +1,11 @@
 import { connect } from 'react-redux';
 import React, { Component } from 'react';
+import TaskItemCalendarIcon from './TaskItemCalendarIcon.react';
+import commentComponents from '../../comments/components';
 import { Table, Checkbox, Popup, Icon, Button } from 'semantic-ui-react'
 import { deleteTask, toggleTaskStatus } from '../actions';
-import TaskItemCalendarIcon from './TaskItemCalendarIcon.react';
+
+const { CommentsModal } = commentComponents;
 
 class TaskItem extends Component {
   deleteItem() {
@@ -38,6 +41,7 @@ class TaskItem extends Component {
             </Table.Cell>
 
             <Table.Cell collapsing>
+              <CommentsModal task={task} />
               <TaskItemCalendarIcon task={task} />
               <Icon name='resize vertical' />
               <Icon name='write' />
