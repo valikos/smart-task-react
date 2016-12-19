@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import React, { Component, PropTypes as RPT } from 'react';
-import { Comment, Icon } from 'semantic-ui-react';
+import { Icon } from 'semantic-ui-react';
 import { deleteComment } from '../actions';
 
 class RemoveCommentIcon extends Component {
@@ -16,8 +16,6 @@ class RemoveCommentIcon extends Component {
   }
 
   render() {
-    const { comment, onDeleteClick } = this.props;
-
     return <Icon name='trash' onClick={this.onClick.bind(this)} />;
   }
 }

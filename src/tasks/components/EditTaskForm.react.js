@@ -15,9 +15,9 @@ const renderField = ({ input, type, label, meta: { touched, error } }) => {
 
 class EditTaskForm extends Component {
 
-  // static propTypes = {
-  //   task: RPT.any.isRequired
-  // }
+  static propTypes = {
+    task: RPT.any.isRequired
+  }
 
   componentWillMount() {
     const { change, task: { attributes: { title } } } = this.props;

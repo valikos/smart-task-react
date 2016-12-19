@@ -1,5 +1,5 @@
 import React, { Component, PropTypes as RPT } from 'react';
-import { Comment, Icon } from 'semantic-ui-react';
+import { Comment } from 'semantic-ui-react';
 import RemoveCommentIcon from './RemoveCommentIcon.react';
 import moment from 'moment';
 

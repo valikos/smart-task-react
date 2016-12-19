@@ -1,6 +1,6 @@
 import React, { Component, PropTypes as RPT } from 'react';
 import { Field, reduxForm } from 'redux-form';
-import { Form, Message, Button, Label } from 'semantic-ui-react'
+import { Form, Label } from 'semantic-ui-react'
 import validate from '../formHandlers/newCommentFormValidation';
 import submit from '../formHandlers/newCommentFormSubmit';
 

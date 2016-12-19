@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Button, Checkbox, Form, Header } from 'semantic-ui-react'
+import { Container, Button, Form, Header } from 'semantic-ui-react'
 
 export default class RegistrationForm extends Component {
   render() {

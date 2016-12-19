@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import React, { Component, PropTypes as RPT } from 'react';
 import CommentItem from './CommentItem.react';
-import { Header, Form, Button, Modal, Icon, Comment } from 'semantic-ui-react';
+import { Header, Comment } from 'semantic-ui-react';
 
 const mapStateToProps = ({ api: { comments = { data: [] } } }) => ({ comments });
 
@@ -14,14 +14,16 @@ class CommentList extends Component {
   renderComments() {
     const { comments, task } = this.props;
 
-    if (comments.data.length === 0)
-      return <Container />
-
-    return comments.data.map((comment) => {
-      if (comment.relationships.task.data.id === task.id) {
-        return <CommentItem key={comment.id} comment={comment} task={task} />
-      }
+    const comment_list = comments.data.filter(comment => {
+      return comment.relationships.task.data.id === task.id
+    }).map(comment => {
+      return <CommentItem key={comment.id} comment={comment} task={task} />;
     });
+
+    if (!comment_list.length)
+      return <Header block as='h3' content='No comments' textAlign='center' />;
+
+    return comment_list;
   }
 
   render() {

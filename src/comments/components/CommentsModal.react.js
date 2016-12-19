@@ -1,7 +1,7 @@
 import React, { Component, PropTypes as RPT } from 'react';
 import { connect } from 'react-redux';
 import { submit } from 'redux-form';
-import { Header, Form, Button, Modal, Icon, Comment } from 'semantic-ui-react';
+import { Header, Button, Modal, Icon } from 'semantic-ui-react';
 import CommentList from './CommentList.react';
 import NewCommentForm from './NewCommentForm.react';
 
@@ -15,16 +15,10 @@ class CommentsModal extends Component {
   };
 
   handleOpen() {
-    const { dispatch } = this.props;
-
-    // dispatch(openEditProjectModal());
     this.setState({ showModal: true });
   }
 
   handleClose() {;
-    const { dispatch } = this.props;
-
-    // dispatch(closeEditProjectModal());
     this.setState({ showModal: false });
   }
 
