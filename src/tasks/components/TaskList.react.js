@@ -12,12 +12,10 @@ class TaskList extends Component {
     if (tasks.data.length === 0)
       return <Container />
 
-    const res =  tasks.data.map((task) => {
+    return tasks.data.map((task) => {
       if (task.relationships.project.data.id === project.id)
         return <TaskItem key={task.id} task={task} project={project} />
     });
-
-    return res;
   }
 
   render() {

@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import React, { Component } from 'react';
 import TaskItemCalendarIcon from './TaskItemCalendarIcon.react';
+import EditTaskModal from './EditTaskModal.react';
 import commentComponents from '../../comments/components';
 import { Table, Checkbox, Popup, Icon, Button } from 'semantic-ui-react'
 import { deleteTask, toggleTaskStatus } from '../actions';
@@ -15,11 +16,17 @@ class TaskItem extends Component {
   }
 
   toggleStatus() {
-    const { dispatch, task, task: { attributes: { completed } } } = this.props;
+    const { dispatch, task: { id, type, attributes: { completed } } } = this.props;
 
-    task.attributes.completed = !completed;
+    const entity = {
+      id,
+      type,
+      attributes: {
+        completed: !completed
+      }
+    }
 
-    dispatch(toggleTaskStatus(task));
+    dispatch(toggleTaskStatus(entity));
   }
 
   render() {
@@ -44,7 +51,7 @@ class TaskItem extends Component {
               <CommentsModal task={task} />
               <TaskItemCalendarIcon task={task} />
               <Icon name='resize vertical' />
-              <Icon name='write' />
+              <EditTaskModal task={task} />
               <Popup
                 trigger={<Icon name='trash outline' />}
                 content={<Button color='red' icon='attention' content='Delete' onClick={this.deleteItem.bind(this)} />}
