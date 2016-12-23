@@ -1,4 +1,6 @@
 import { browserHistory } from 'react-router'
+import { setAccessToken } from 'redux-json-api';
+
 // Registraion actions
 export const REGISTER_REQUEST = 'REGISTER_REQUEST';
 export const REGISTER_SUCCESS = 'REGISTER_SUCCESS';
@@ -106,8 +108,9 @@ export function loginUser(creds) {
           dispatch(loginError('There was an error logging in'));
           return Promise.reject('There was an error logging in');
         } else {
-          const token = response.headers.getAll('Authorization');
+          const token = response.headers.get('Authorization');
           localStorage.setItem('auth_token', token);
+          dispatch(setAccessToken(token));
           dispatch(receiveLogin(token));
         }
       })
@@ -131,8 +134,9 @@ export function registerUser(creds) {
           dispatch(registrationError('There was an error logging in'));
           return Promise.reject('There was an error logging in');
         } else {
-          const token = response.headers.getAll('Authorization');
+          const token = response.headers.get('Authorization');
           localStorage.setItem('auth_token', token);
+          dispatch(setAccessToken(token));
           dispatch(receiveRegistration(token));
         }
       })

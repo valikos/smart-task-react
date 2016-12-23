@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Grid } from 'semantic-ui-react';
+import { Menu, Grid, Container, Button } from 'semantic-ui-react';
 import projectComponents from '../../projects/components';
 
 const { ProjectList, NewProjectModal } = projectComponents;
@@ -8,18 +8,38 @@ export default class ProjectsIndex extends Component {
 
   render() {
     return (
-      <Grid centered columns={2}>
-        <Grid.Row>
-          <Grid.Column>
+      <div>
+        <Menu fixed='top'>
+          <Container>
+            <Menu.Item
+              name='logo'
+              content='Smart Task'
+            />
+
+            <Menu.Item>
+              <NewProjectModal />
+            </Menu.Item>
+
+            <Menu.Menu position='right'>
+              <Menu.Item>
+                <Button primary>Logout</Button>
+              </Menu.Item>
+            </Menu.Menu>
+          </Container>
+        </Menu>
+
+        <Grid centered columns={2}>
+          <Grid.Column style={styles.wrapper}>
             <ProjectList />
           </Grid.Column>
-        </Grid.Row>
-        <Grid.Row>
-          <Grid.Column textAlign='center'>
-            <NewProjectModal />
-          </Grid.Column>
-        </Grid.Row>
-      </Grid>
+        </Grid>
+      </div>
     );
+  }
+}
+
+const styles = {
+  wrapper: {
+    marginTop: 40
   }
 }

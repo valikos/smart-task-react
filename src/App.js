@@ -1,8 +1,7 @@
 import React, { Component, PropTypes as RPT } from 'react';
-// import './App.css';
 import '../node_modules/semantic-ui-css/semantic.min.css';
 import '../node_modules/react-datepicker/dist/react-datepicker.css';
-import './index.css';
+import './App.css';
 
 class App extends Component {
 
@@ -13,11 +12,7 @@ class App extends Component {
   render() {
     const { children } = this.props;
 
-    return (
-      <div className="App">
-        {children}
-      </div>
-    );
+    return children;
   }
 }
 

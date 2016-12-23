@@ -8,28 +8,32 @@ export default class Page extends Component {
 
   render() {
     return (
-      <Grid centered columns={3}>
-        <Grid.Row>
-          <Grid.Column>
-            <Segment>
-              <Header as='h2' icon textAlign='center'>
-                <Icon circular inverted color='blue' name='user' />
-                Smart Task
-                <Header.Subheader>
-                  Enter to start manage your projects
-                </Header.Subheader>
-              </Header>
-              <FacebookAuth />
-              <Divider horizontal>OR</Divider>
-              <RegistrationForm />
-            </Segment>
-            <Segment>
-              <LoginForm />
-            </Segment>
-          </Grid.Column>
-        </Grid.Row>
+      <Grid verticalAlign='middle' columns={4} centered style={styles.wrapper}>
+        <Grid.Column>
+          <Segment>
+            <Header as='h2' icon textAlign='center'>
+              <Icon circular inverted color='blue' name='user' />
+              Smart Task
+              <Header.Subheader>
+                Enter to start manage your projects
+              </Header.Subheader>
+            </Header>
+            <FacebookAuth />
+            <Divider horizontal>OR</Divider>
+            <RegistrationForm />
+          </Segment>
+
+          <Segment>
+            <LoginForm />
+          </Segment>
+        </Grid.Column>
       </Grid>
     );
   }
 };
 
+const styles = {
+  wrapper: {
+    marginTop: 40
+  }
+};
