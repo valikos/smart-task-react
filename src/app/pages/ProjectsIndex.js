@@ -1,12 +1,17 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Menu, Grid, Container, Button } from 'semantic-ui-react';
 import projectComponents from '../../projects/components';
+import { logoutUser } from '../../authentication/actions';
 
 const { ProjectList, NewProjectModal } = projectComponents;
 
-export default class ProjectsIndex extends Component {
+class ProjectsIndex extends Component {
 
   render() {
+
+    const { dispatch } = this.props;
+
     return (
       <div>
         <Menu fixed='top'>
@@ -22,7 +27,12 @@ export default class ProjectsIndex extends Component {
 
             <Menu.Menu position='right'>
               <Menu.Item>
-                <Button primary>Logout</Button>
+                <Button
+                  primary
+                  onClick={() => dispatch(logoutUser())}
+                >
+                  Logout
+                </Button>
               </Menu.Item>
             </Menu.Menu>
           </Container>
@@ -43,3 +53,5 @@ const styles = {
     marginTop: 40
   }
 }
+
+export default connect()(ProjectsIndex);

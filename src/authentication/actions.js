@@ -145,8 +145,9 @@ export function registerUser(creds) {
 
 export function logoutUser() {
   return dispatch => {
-    dispatch(requestLogout())
-    localStorage.removeItem('auth_token')
-    dispatch(receiveLogout())
+    dispatch(requestLogout());
+    localStorage.removeItem('auth_token');
+    dispatch(receiveLogout());
+    browserHistory.push('/auth');
   }
 }
