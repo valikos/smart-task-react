@@ -14,6 +14,8 @@ export const LOGOUT_REQUEST = 'LOGOUT_REQUEST';
 export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS';
 export const LOGOUT_FAILURE = 'LOGOUT_FAILURE';
 
+const AUTH_ENDPOINT = `${process.env.REACT_APP_ENDPOINT_HOST}auth`;
+
 function requestLogin(creds) {
   return {
     type: LOGIN_REQUEST,
@@ -99,10 +101,12 @@ export function loginUser(creds) {
 
   const query = `login=${creds.login}&password=${creds.password}`;
 
+  console.log(AUTH_ENDPOINT);
+
   return dispatch => {
     dispatch(requestLogin(creds));
 
-    return fetch(`http://localhost:2300/auth/login?${query}`, config)
+    return fetch(`${AUTH_ENDPOINT}/login?${query}`, config)
       .then(response => {
         if (!response.ok) {
           dispatch(loginError('There was an error logging in'));
@@ -128,7 +132,7 @@ export function registerUser(creds) {
   return dispatch => {
     dispatch(requestRegistration(creds));
 
-    return fetch(`http://localhost:2300/auth/create-account?${query}`, config)
+    return fetch(`${AUTH_ENDPOINT}/create-account?${query}`, config)
       .then(response => {
         if (!response.ok) {
           dispatch(registrationError('There was an error logging in'));
