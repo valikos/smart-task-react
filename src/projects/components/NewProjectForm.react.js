@@ -6,10 +6,10 @@ import submit from '../formHandlers/newProjectFormSubmit';
 
 const renderField = ({ input, label, meta: { touched, error } }) => {
   return (
-    <div>
+    <Form.Field>
       <Form.Input {...input} label={label} error={touched && error} />
       {touched && (error && <Message error content={error} />)}
-    </div>
+    </Form.Field>
   )
 }
 
@@ -18,13 +18,11 @@ const NewProjectForm = (props) => {
 
   return (
     <Form error onSubmit={handleSubmit}>
-      <Form.Field>
-        <Field
-          name="title"
-          label='Title'
-          component={renderField}
-        />
-      </Form.Field>
+      <Field
+        name="title"
+        label='Title'
+        component={renderField}
+      />
     </Form>
   )
 }

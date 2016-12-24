@@ -21,17 +21,35 @@ const store = createStore(reducers, composeWithDevTools(applyMiddleware(thunk)))
 
 store.dispatch(setEndpointHost('http://localhost:2300/'));
 store.dispatch(setEndpointPath('api'));
-store.dispatch(setAccessToken('eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhY2NvdW50X2lkIjoxfQ.DuR0O-TQbYg4ZT-dIkjeKsMYELmS1KSU42wkDNoH8Wo'));
+
+if (localStorage.getItem('auth_token')) {
+  store.dispatch(setAccessToken(localStorage.getItem('auth_token')));
+}
 
 // Create an enhanced history that syncs navigation events with the store
 const history = syncHistoryWithStore(browserHistory, store);
+
+function requireAuth(nextState, replace) {
+  if (!localStorage.getItem('auth_token')) {
+    replace({
+      pathname: '/auth',
+      state: { nextPathname: nextState.location.pathname }
+    });
+  }
+}
+
+function forbidAuth(nextState, replace) {
+  if (localStorage.getItem('auth_token')) {
+    replace('/');
+  }
+}
 
 ReactDOM.render(
   <Provider store={store}>
     <Router history={history}>
       <Route path="/" component={App}>
-        <IndexRoute component={ProjectsIndexContainer} />
-        <Route path="/authentication" component={Auth} />
+        <IndexRoute component={ProjectsIndexContainer} onEnter={requireAuth} />
+        <Route component={Auth} path='/auth' onEnter={forbidAuth} />
       </Route>
     </Router>
   </Provider>,

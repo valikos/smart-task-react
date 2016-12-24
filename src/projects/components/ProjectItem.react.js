@@ -59,7 +59,7 @@ class ProjectItem extends Component {
             project={project}
           />
         </Segment>
-        <Segment basic>
+        <Segment>
           <TaskList project={project} />
         </Segment>
       </Segment.Group>
