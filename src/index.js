@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 
+import dotenv from 'dotenv';
+
 import { setEndpointHost, setEndpointPath, setAccessToken } from 'redux-json-api';
 
 import { createStore, applyMiddleware } from 'redux';
@@ -16,11 +18,13 @@ import reducers from './rootReducer';
 import Auth    from './authentication/Page.react';
 import ProjectsIndexContainer from './app/containers/ProjectsIndexContainer';
 
+dotenv.config();
+
 // Add the reducer to your store on the `routing` key
 const store = createStore(reducers, composeWithDevTools(applyMiddleware(thunk)));
 
-store.dispatch(setEndpointHost('http://localhost:2300/'));
-store.dispatch(setEndpointPath('api'));
+store.dispatch(setEndpointHost(process.env.ENDPOINT_HOST));
+store.dispatch(setEndpointPath(process.env.ENDPOINT_PATH));
 
 if (localStorage.getItem('auth_token')) {
   store.dispatch(setAccessToken(localStorage.getItem('auth_token')));
