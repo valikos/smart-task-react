@@ -6379,8 +6379,8 @@
     },
     "redux-json-api": {
       "version": "1.6.2",
-      "from": "https://registry.npmjs.org/redux-json-api/-/redux-json-api-1.6.2.tgz",
-      "resolved": "https://registry.npmjs.org/redux-json-api/-/redux-json-api-1.6.2.tgz"
+      "from": "https://github.com/valikos/redux-json-api/tarball/smart-task-api",
+      "resolved": "https://github.com/valikos/redux-json-api/tarball/smart-task-api"
     },
     "redux-thunk": {
       "version": "2.1.0",
