@@ -5,7 +5,7 @@ import { setAccessToken } from 'redux-json-api';
 export const REGISTER_REQUEST = 'REGISTER_REQUEST';
 export const REGISTER_SUCCESS = 'REGISTER_SUCCESS';
 export const REGISTER_FAILURE = 'REGISTER_FAILURE';
-// Login actions
+// Sign in actions
 export const LOGIN_REQUEST = 'LOGIN_REQUEST';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_FAILURE = 'LOGIN_FAILURE';
@@ -16,64 +16,93 @@ export const LOGOUT_FAILURE = 'LOGOUT_FAILURE';
 
 const AUTH_ENDPOINT = `${process.env.REACT_APP_ENDPOINT_HOST}auth`;
 
-function requestLogin(creds) {
+/*
+ * Sign in actions
+ */
+export function requestLogin(creds) {
   return {
     type: LOGIN_REQUEST,
-    isFetching: true,
-    isAuthenticated: false,
-    account: { login: creds.login }
+    payload: {
+      login: {
+        isFetching: true
+      },
+      isAuthenticated: false,
+      account: { login: creds.login }
+    }
   }
 }
 
-function receiveLogin(token) {
+export function receiveLogin(token) {
   return {
     type: LOGIN_SUCCESS,
-    isFetching: false,
-    isAuthenticated: true,
-    auth_token: token
+    payload: {
+      login: {
+        isFetching: false,
+      },
+      isAuthenticated: true,
+      auth_token: token
+    }
   }
 }
 
-function loginError(message) {
+export function loginError(errorMessage) {
   return {
     type: LOGIN_FAILURE,
-    isFetching: false,
-    isAuthenticated: false,
-    account: {},
-    message
+    payload: {
+      login: {
+        isFetching: false,
+        errorMessage
+      },
+      isAuthenticated: false,
+      account: {},
+    }
   }
 }
 
-function requestRegistration(creds) {
+/*
+ * Sign up actions
+ */
+export function requestRegistration(creds) {
   return {
     type: REGISTER_REQUEST,
-    isFetching: true,
-    isAuthenticated: false,
-    account: { login: creds.login }
+    payload: {
+      registration: {
+        isFetching: true
+      },
+      isAuthenticated: false,
+      account: { login: creds.login }
+    }
   }
 }
 
-function receiveRegistration(token) {
+export function receiveRegistration(token) {
   return {
     type: REGISTER_SUCCESS,
-    isFetching: false,
-    isAuthenticated: true,
-    auth_token: token
+    payload: {
+      registration: {
+        isFetching: false,
+      },
+      isAuthenticated: true,
+      auth_token: token
+    }
   }
 }
 
-function registrationError(message) {
+export function registrationError(errorMessage) {
   return {
     type: REGISTER_FAILURE,
-    isFetching: false,
-    isAuthenticated: false,
-    account: {},
-    message
+    payload: {
+      registration: {
+        isFetching: false,
+        errorMessage
+      },
+      isAuthenticated: false,
+      account: {},
+    }
   }
 }
 
-
-function requestLogout() {
+export function requestLogout() {
   return {
     type: LOGOUT_REQUEST,
     isFetching: true,
@@ -81,7 +110,7 @@ function requestLogout() {
   }
 }
 
-function receiveLogout() {
+export function receiveLogout() {
   return {
     type: LOGOUT_SUCCESS,
     isFetching: false,
@@ -101,23 +130,10 @@ export function loginUser(creds) {
 
   const query = `login=${creds.login}&password=${creds.password}`;
 
-  console.log(AUTH_ENDPOINT);
-
   return dispatch => {
     dispatch(requestLogin(creds));
 
-    return fetch(`${AUTH_ENDPOINT}/login?${query}`, config)
-      .then(response => {
-        if (!response.ok) {
-          dispatch(loginError('There was an error logging in'));
-          return Promise.reject('There was an error logging in');
-        } else {
-          const token = response.headers.get('Authorization');
-          localStorage.setItem('auth_token', token);
-          dispatch(setAccessToken(token));
-          dispatch(receiveLogin(token));
-        }
-      })
+    return Promise.resolve(fetch(`${AUTH_ENDPOINT}/login?${query}`, config));
   }
 }
 
@@ -132,18 +148,7 @@ export function registerUser(creds) {
   return dispatch => {
     dispatch(requestRegistration(creds));
 
-    return fetch(`${AUTH_ENDPOINT}/create-account?${query}`, config)
-      .then(response => {
-        if (!response.ok) {
-          dispatch(registrationError('There was an error logging in'));
-          return Promise.reject('There was an error logging in');
-        } else {
-          const token = response.headers.get('Authorization');
-          localStorage.setItem('auth_token', token);
-          dispatch(setAccessToken(token));
-          dispatch(receiveRegistration(token));
-        }
-      })
+    return Promise.resolve(fetch(`${AUTH_ENDPOINT}/create-account?${query}`, config));
   }
 }
 

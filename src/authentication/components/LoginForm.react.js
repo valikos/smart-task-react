@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import { Container, Button, Checkbox, Form, Header, Message } from 'semantic-ui-react'
 import validate from '../formHandlers/loginFormValidation';
 import submit from '../formHandlers/loginFormSubmit';
+
+const mapStateToProps = (state) => {
+  return { auth: state.auth };
+}
 
 const renderField = ({ input, type, label, placeholder, meta: { touched, error } }) => {
   return (
@@ -10,12 +15,12 @@ const renderField = ({ input, type, label, placeholder, meta: { touched, error }
       <Form.Input {...input} type={type} label={label} placeholder={placeholder} error={touched && error} />
       {touched && (error && <Message error content={error} />)}
     </Form.Field>
-  )
+  );
 }
 
 class LoginForm extends Component {
   render() {
-    const { handleSubmit, error } = this.props;
+    const { handleSubmit, error, auth: { login: { isFetching } } } = this.props;
 
     return (
       <Container>
@@ -36,15 +41,26 @@ class LoginForm extends Component {
             component={renderField}
           />
           {error && (<Message error content={error} />)}
-          <Button color='blue' fluid type='submit'>Login</Button>
+          <Button
+            fluid
+            color='blue'
+            type='submit'
+            loading={isFetching}
+            disabled={isFetching}
+          >
+            Sign in
+          </Button>
         </Form>
       </Container>
     );
   }
 }
 
-export default reduxForm({
+LoginForm = connect(mapStateToProps)(LoginForm);
+LoginForm = reduxForm({
   form: 'loginForm',
   validate,
   onSubmit: submit
 })(LoginForm);
+
+export default LoginForm;

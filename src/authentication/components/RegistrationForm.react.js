@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import { Container, Button, Checkbox, Form, Header, Message } from 'semantic-ui-react'
 import validate from '../formHandlers/registrationFormValidation';
 import submit from '../formHandlers/registrationFormSubmit';
+
+const mapStateToProps = (state) => {
+  return { auth: state.auth };
+}
 
 const renderField = ({ input, type, label, placeholder, meta: { touched, error } }) => {
   return (
@@ -15,7 +20,7 @@ const renderField = ({ input, type, label, placeholder, meta: { touched, error }
 
 class RegistrationForm extends Component {
   render() {
-    const { handleSubmit, error } = this.props;
+    const { handleSubmit, error, auth: { registration: { isFetching } } } = this.props;
 
     return (
       <Container>
@@ -33,15 +38,26 @@ class RegistrationForm extends Component {
             component={renderField}
           />
           {error && (<Message error content={error} />)}
-          <Button color='blue' fluid type='submit'>Registration</Button>
+          <Button
+            fluid
+            color='blue'
+            type='submit'
+            loading={isFetching}
+            disabled={isFetching}
+          >
+            Sign up
+          </Button>
         </Form>
       </Container>
     );
   }
 }
 
-export default reduxForm({
+RegistrationForm = connect(mapStateToProps)(RegistrationForm);
+RegistrationForm = reduxForm({
   form: 'registrationForm',
   validate,
   onSubmit: submit
 })(RegistrationForm);
+
+export default RegistrationForm;
