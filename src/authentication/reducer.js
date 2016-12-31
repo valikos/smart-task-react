@@ -22,13 +22,13 @@ export default function authReducer(state = initialState, action) {
     case actions.LOGIN_FAILURE:
       return Object.assign({}, state, action.payload);
 
-    case actions.SIGNUP_REQUEST:
+    case actions.REGISTER_REQUEST:
       return Object.assign({}, state, action.payload);
 
-    case actions.SIGNUP_SUCCESS:
+    case actions.REGISTER_SUCCESS:
       return Object.assign({}, state, action.payload);
 
-    case actions.SIGNUP_FAILURE:
+    case actions.REGISTER_FAILURE:
       return Object.assign({}, state, action.payload);
 
     case actions.LOGOUT_SUCCESS:
