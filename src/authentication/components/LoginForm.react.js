@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
-import { Container, Button, Checkbox, Form, Header, Message } from 'semantic-ui-react'
+import { Container, Button, Form, Header, Message } from 'semantic-ui-react'
 import validate from '../formHandlers/loginFormValidation';
 import submit from '../formHandlers/loginFormSubmit';
 
