@@ -1,19 +1,39 @@
 import React, { Component } from 'react';
-import { Icon, Button, Popup } from 'semantic-ui-react'
+import { connect } from 'react-redux';
+import { Icon, Button, Popup, Message } from 'semantic-ui-react'
+import { authenticateWithFacebook } from '../actions';
 
-export default class FacebookAuth extends Component {
+class FacebookAuth extends Component {
+
   render() {
+    const {
+      dispatch,
+      auth: {
+        provider: { initialized },
+        facebookLogin: {
+          isFetching,
+          errorMessage
+      } } } = this.props;
+
     return (
-      <Popup
-        trigger={
-          <Button fluid color='facebook'>
-            <Icon name='facebook' /> Enter with Facebook
-          </Button>
-        }
-        content='This feature is not available yet'
-        inverted
-        hideOnScroll
-      />
+      <div>
+        <Button
+          fluid
+          color='facebook'
+          loading={isFetching}
+          disabled={!initialized || isFetching}
+          onClick={() => dispatch(authenticateWithFacebook())}
+        >
+          <Icon name='facebook' /> Enter with Facebook
+        </Button>
+        { errorMessage && <Message error content={errorMessage} /> }
+      </div>
     );
   }
 }
+
+const mapStateToProps = (state) => {
+  return { auth: state.auth };
+}
+
+export default connect(mapStateToProps)(FacebookAuth);
