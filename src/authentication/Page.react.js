@@ -4,8 +4,13 @@ import RegistrationForm      from './components/RegistrationForm.react';
 import FacebookAuth          from './components/FacebookAuth.react';
 import { Grid, Segment, Divider, Icon, Header } from 'semantic-ui-react';
 
-export default class Page extends Component {
+const styles = {
+  wrapper: {
+    marginTop: 40
+  }
+};
 
+export default class Page extends Component {
   render() {
     return (
       <Grid verticalAlign='middle' columns={4} centered style={styles.wrapper}>
@@ -29,11 +34,5 @@ export default class Page extends Component {
         </Grid.Column>
       </Grid>
     );
-  }
-};
-
-const styles = {
-  wrapper: {
-    marginTop: 40
   }
 };

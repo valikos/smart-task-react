@@ -291,6 +291,8 @@ export function authenticateWithFacebook() {
       case 'not_authorized':
         return dispatch(fbLogin());
 
+      default:
+        break;
     }
   }
 }
