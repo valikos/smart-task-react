@@ -13,8 +13,8 @@ import { syncHistoryWithStore } from 'react-router-redux';
 
 import reducers from './rootReducer';
 
-import Auth    from './authentication/Page.react';
-import ProjectsIndexContainer from './app/containers/ProjectsIndexContainer';
+import Auth     from './authentication/Page.react';
+import Projects from './projects/Page.react';
 
 // Add the reducer to your store on the `routing` key
 const store = createStore(reducers, composeWithDevTools(applyMiddleware(thunk)));
@@ -48,7 +48,7 @@ ReactDOM.render(
   <Provider store={store}>
     <Router history={history}>
       <Route path="/" component={App}>
-        <IndexRoute component={ProjectsIndexContainer} onEnter={requireAuth} />
+        <IndexRoute component={Projects} onEnter={requireAuth} />
         <Route component={Auth} path='/auth' onEnter={forbidAuth} />
       </Route>
     </Router>

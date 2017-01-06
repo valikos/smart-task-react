@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Icon, Button, Popup, Message } from 'semantic-ui-react'
+import { Icon, Button, Message } from 'semantic-ui-react'
 import { authenticateWithFacebook } from '../actions';
 
 class FacebookAuth extends Component {

@@ -1,4 +1,4 @@
-import React, { Component, PropTypes as RPT } from 'react';
+import { Component, PropTypes as RPT } from 'react';
 import { connect } from 'react-redux';
 import { setFbAsyncInit, loadSdkAsynchronously } from './authentication/actions';
 import '../node_modules/semantic-ui-css/semantic.min.css';
