@@ -3,14 +3,14 @@ import { Field, reduxForm } from 'redux-form';
 import { Form, Button } from 'semantic-ui-react'
 import submit from '../formHandlers/newTaskFormSubmit';
 
-const renderField = ({ input, label, meta: { touched, error } }) => {
+const renderField = ({ input, label, meta: { touched, error, submitting } }) => {
   return (
     <Form.Input
       {...input}
       placeholder='Start typing there to create a task'
       icon='plus'
       iconPosition='left'
-      action={<Button color='green' type='submit'>Add Task</Button>}
+      action={<Button color='green' type='submit' loading={submitting} disabled={submitting}>Add Task</Button>}
     />
   )
 }

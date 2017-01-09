@@ -1,6 +1,6 @@
 {
   "name": "smart-task",
-  "version": "0.1.0",
+  "version": "0.1.6",
   "dependencies": {
     "ansi-regex": {
       "version": "2.0.0",
@@ -153,9 +153,9 @@
       "optional": true
     },
     "es6-error": {
-      "version": "4.0.0",
+      "version": "4.0.1",
       "from": "es6-error@>=4.0.0 <5.0.0",
-      "resolved": "https://registry.npmjs.org/es6-error/-/es6-error-4.0.0.tgz"
+      "resolved": "https://registry.npmjs.org/es6-error/-/es6-error-4.0.1.tgz"
     },
     "escape-string-regexp": {
       "version": "1.0.5",
@@ -6373,9 +6373,21 @@
       "resolved": "https://registry.npmjs.org/redux-devtools-extension/-/redux-devtools-extension-1.0.0.tgz"
     },
     "redux-form": {
-      "version": "6.2.1",
+      "version": "6.4.3",
       "from": "redux-form@latest",
-      "resolved": "https://registry.npmjs.org/redux-form/-/redux-form-6.2.1.tgz"
+      "resolved": "https://registry.npmjs.org/redux-form/-/redux-form-6.4.3.tgz",
+      "dependencies": {
+        "lodash": {
+          "version": "4.17.4",
+          "from": "lodash@>=4.17.3 <5.0.0",
+          "resolved": "https://registry.npmjs.org/lodash/-/lodash-4.17.4.tgz"
+        },
+        "lodash-es": {
+          "version": "4.17.4",
+          "from": "lodash-es@>=4.17.3 <5.0.0",
+          "resolved": "https://registry.npmjs.org/lodash-es/-/lodash-es-4.17.4.tgz"
+        }
+      }
     },
     "redux-json-api": {
       "version": "1.6.2",
