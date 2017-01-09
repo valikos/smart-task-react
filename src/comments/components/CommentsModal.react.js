@@ -1,9 +1,15 @@
 import React, { Component, PropTypes as RPT } from 'react';
 import { connect } from 'react-redux';
-import { submit } from 'redux-form';
+import { submit, isSubmitting } from 'redux-form';
 import { Header, Button, Modal, Icon } from 'semantic-ui-react';
 import CommentList from './CommentList.react';
 import NewCommentForm from './NewCommentForm.react';
+
+const mapStateToProps = (state) => {
+  return {
+    isSubmitting: isSubmitting('newCommentForm')(state)
+  }
+}
 
 class CommentsModal extends Component {
   static propTypes = {
@@ -24,7 +30,7 @@ class CommentsModal extends Component {
 
   render() {
     const { showModal } = this.state;
-    const { dispatch, task } = this.props;
+    const { dispatch, task, isSubmitting } = this.props;
 
     return (
       <Modal
@@ -61,6 +67,8 @@ class CommentsModal extends Component {
             labelPosition='right'
             icon='edit'
             positive
+            disabled={isSubmitting}
+            loading={isSubmitting}
             onClick={() => dispatch(submit('newCommentForm'))}
           />
         </Modal.Actions>
@@ -69,4 +77,4 @@ class CommentsModal extends Component {
   }
 }
 
-export default connect()(CommentsModal);
+export default connect(mapStateToProps)(CommentsModal);

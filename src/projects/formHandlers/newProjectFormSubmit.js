@@ -1,4 +1,4 @@
-import { reset } from 'redux-form'
+import { reset, startSubmit, stopSubmit } from 'redux-form'
 import { createProject } from '../actions';
 import { closeNewProjectModal } from '../../ui/actions';
 
@@ -10,7 +10,10 @@ export default function submit(values, dispatch) {
     },
   };
 
-  dispatch(createProject(entity));
-  dispatch(reset('newProjectForm'));
-  dispatch(closeNewProjectModal());
+  dispatch(startSubmit('newProjectForm'));
+  dispatch(createProject(entity)).then(() => {
+    dispatch(reset('newProjectForm'));
+    dispatch(stopSubmit('newProjectForm'));
+    dispatch(closeNewProjectModal());
+  });
 }

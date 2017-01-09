@@ -1,11 +1,11 @@
 import * as actions from './actions';
 import { Map } from 'immutable';
 
-const initialState = Map({
+const projectListInitialState = Map({
   isFetching: false
 });
 
-export default function projectsReducer(state = initialState, action) {
+export function projectsReducer(state = projectListInitialState, action) {
   switch(action.type) {
 
     case actions.PROJECT_LIST_REQUEST: {
