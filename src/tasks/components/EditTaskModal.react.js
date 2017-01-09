@@ -1,15 +1,16 @@
 import React, { Component, PropTypes as RPT } from 'react';
 import { connect } from 'react-redux';
-import { submit } from 'redux-form';
+import { submit, isSubmitting } from 'redux-form';
 import { Button, Modal, Icon } from 'semantic-ui-react';
 import EditTaskForm from './EditTaskForm.react';
 import { openEditTaskModal, closeEditTaskModal } from '../../ui/actions';
 
 const mapStateToProps = (state) => {
   return {
+    isSubmitting: isSubmitting('editTaskForm')(state),
     isEditTaskModalOpen: state.ui.get('isEditTaskModalOpen')
   }
-}
+};
 
 class EditTaskModal extends Component {
 
@@ -45,7 +46,7 @@ class EditTaskModal extends Component {
 
   render() {
     const { showModal } = this.state;
-    const { dispatch, task } = this.props;
+    const { dispatch, task, isSubmitting } = this.props;
 
     return (
       <Modal
@@ -66,6 +67,8 @@ class EditTaskModal extends Component {
             labelPosition='right'
             icon='checkmark'
             content='Submit'
+            disabled={isSubmitting}
+            loading={isSubmitting}
             onClick={() => dispatch(submit('editTaskForm'))}
           />
         </Modal.Actions>

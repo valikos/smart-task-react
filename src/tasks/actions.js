@@ -5,17 +5,17 @@ export const fetchTasks = (project) => {
 }
 
 export const createTask = (entity) => {
-  return dispatch => (dispatch(createEntity(entity)));
+  return dispatch => dispatch(createEntity(entity));
 }
 
 export const updateTask = (entity) => {
-  return dispatch => (dispatch(updateEntity(entity)));
+  return dispatch => dispatch(updateEntity(entity));
 }
 
 export const deleteTask = (entity) => {
-  return dispatch => (dispatch(deleteEntity(entity)));
+  return dispatch => dispatch(deleteEntity(entity));
 }
 
 export const toggleTaskStatus = (entity) => {
-  return dispatch => (dispatch(updateEntity(entity)));
+  return dispatch => dispatch(updateEntity(entity));
 }

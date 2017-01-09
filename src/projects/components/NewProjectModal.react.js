@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { submit } from 'redux-form';
+import { submit, isSubmitting } from 'redux-form';
 import { Button, Modal, Icon } from 'semantic-ui-react';
 import NewProjectForm from './NewProjectForm.react';
 import { openNewProjectModal, closeNewProjectModal } from '../../ui/actions';
 
 const mapStateToProps = (state) => {
   return {
+    isSubmitting: isSubmitting('newProjectForm')(state),
     isNewProjectModalOpen: state.ui.get('isNewProjectModalOpen')
   }
 }
@@ -41,7 +42,7 @@ class NewProjectModal extends Component {
 
   render() {
     const { showModal } = this.state;
-    const { dispatch } = this.props;
+    const { dispatch, isSubmitting } = this.props;
 
     return (
       <Modal
@@ -62,6 +63,8 @@ class NewProjectModal extends Component {
             labelPosition='right'
             icon='checkmark'
             content='Submit'
+            disabled={isSubmitting}
+            loading={isSubmitting}
             onClick={() => dispatch(submit('newProjectForm'))}
           />
         </Modal.Actions>

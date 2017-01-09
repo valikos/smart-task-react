@@ -1,4 +1,4 @@
-import { reset, change } from 'redux-form'
+import { reset, change, startSubmit, stopSubmit } from 'redux-form'
 import { createTask } from '../actions';
 
 export default function submit(values, dispatch) {
@@ -21,8 +21,10 @@ export default function submit(values, dispatch) {
 
   const submittedForm = `NewProject${project.id}TaskForm`;
 
+  dispatch(startSubmit(submittedForm));
   dispatch(createTask(entity)).then(() => {
     dispatch(reset(submittedForm));
+    dispatch(stopSubmit(submittedForm));
     dispatch(change(submittedForm, 'project', project));
   });
 }

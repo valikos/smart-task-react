@@ -1,4 +1,4 @@
-import { reset } from 'redux-form'
+import { reset, startSubmit, stopSubmit } from 'redux-form'
 import { updateTask } from '../actions';
 import { closeEditTaskModal } from '../../ui/actions';
 
@@ -13,7 +13,10 @@ export default function submit(values, dispatch) {
     }
   };
 
-  dispatch(updateTask(entity));
-  dispatch(reset('editTaskForm'));
-  dispatch(closeEditTaskModal());
+  dispatch(startSubmit('editTaskForm'));
+  dispatch(updateTask(entity)).then(() => {
+    dispatch(reset('editTaskForm'));
+    dispatch(stopSubmit('editTaskForm'));
+    dispatch(closeEditTaskModal());
+  });
 }
