@@ -48,7 +48,7 @@ class ProjectItem extends Component {
                 trigger={<Icon name='trash outline' />}
                 content={<Button color='red' icon='attention' content='Delete' onClick={this.deleteProject.bind(this)} />}
                 on='click'
-                positioning='right center'
+                position='right center'
               />
             </Grid.Column>
           </Grid>
