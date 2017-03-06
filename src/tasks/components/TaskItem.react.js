@@ -56,7 +56,7 @@ class TaskItem extends Component {
                 trigger={<Icon name='trash outline' />}
                 content={<Button color='red' icon='attention' content='Delete' onClick={this.deleteItem.bind(this)} />}
                 on='click'
-                positioning='right center'
+                position='right center'
               />
             </Table.Cell>
           </Table.Row>

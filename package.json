@@ -28,8 +28,8 @@
     "redux-form": "^6.5.0",
     "redux-json-api": "^1.7.0",
     "redux-thunk": "^2.2.0",
-    "semantic-ui-css": "^2.2.4",
-    "semantic-ui-react": "^0.64.7"
+    "semantic-ui-css": "^2.2.9",
+    "semantic-ui-react": "^0.67.0"
   },
   "scripts": {
     "start": "react-scripts start",
