@@ -1,4 +1,9 @@
-import { readEndpoint, createEntity, updateEntity, deleteEntity } from 'redux-json-api';
+import {
+  readEndpoint,
+  createEntity,
+  updateEntity,
+  deleteEntity
+} from 'redux-json-api';
 
 export const fetchTasks = (project) => {
   return dispatch => (dispatch(readEndpoint(`projects/${project.id}/tasks`)));
