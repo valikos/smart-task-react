@@ -1,5 +1,8 @@
-import * as actions from './actions';
 import { Map } from 'immutable';
+
+import {
+  PROJECT_LIST_REQUEST,
+  PROJECT_LIST_SUCCESS } from './constants';
 
 const projectListInitialState = Map({
   isFetching: false
@@ -8,12 +11,12 @@ const projectListInitialState = Map({
 export function projectsReducer(state = projectListInitialState, action) {
   switch(action.type) {
 
-    case actions.PROJECT_LIST_REQUEST: {
-      return state.update('isFetching', isFetching => true);
+    case PROJECT_LIST_REQUEST: {
+      return state.set('isFetching', true);
     }
 
-    case actions.PROJECT_LIST_SUCCESS: {
-      return state.update('isFetching', isFetching => false);
+    case PROJECT_LIST_SUCCESS: {
+      return state.set('isFetching', false);
     }
 
     default: {
