@@ -1,26 +1,25 @@
 import {
   readEndpoint,
-  createEntity,
-  updateEntity,
-  deleteEntity
-} from 'redux-json-api';
+  createResource,
+  updateResource,
+  deleteResource } from 'redux-json-api';
 
 export const fetchTasks = (project) => {
   return dispatch => (dispatch(readEndpoint(`projects/${project.id}/tasks`)));
 }
 
-export const createTask = (entity) => {
-  return dispatch => dispatch(createEntity(entity));
+export const createTask = (task) => {
+  return dispatch => dispatch(createResource(task));
 }
 
-export const updateTask = (entity) => {
-  return dispatch => dispatch(updateEntity(entity));
+export const updateTask = (task) => {
+  return dispatch => dispatch(updateResource(task));
 }
 
-export const deleteTask = (entity) => {
-  return dispatch => dispatch(deleteEntity(entity));
+export const deleteTask = (task) => {
+  return dispatch => dispatch(deleteResource(task));
 }
 
-export const toggleTaskStatus = (entity) => {
-  return dispatch => dispatch(updateEntity(entity));
+export const toggleTaskStatus = (task) => {
+  return dispatch => dispatch(updateResource(task));
 }
